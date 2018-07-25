@@ -16,6 +16,21 @@
         <link rel="stylesheet" type="text/css" href="<?php echo base_url().'assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css'; ?>">
     </head>
     <body>
+    
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+         
+          <center>
+              <a href="https://fullcalendar.io/">
+                <img id="logo" src="https://fullcalendar.io/images/logo.svg" width="58" height="48">
+              </a>
+              +
+              <a href="https://fullcalendar.io/">
+                <img id="logo" src="https://www.codeigniter.com/assets/images/ci-logo-white.png" width="58" height="48">
+              </a>
+          </center>
+      </div>
+    </nav>        
 
     <div class="container">
         <div class="page-content-wrapper">
@@ -28,6 +43,19 @@
                     <div class="col-md-12">
                         <div class="portlet light bordered">
                             <div class="portlet-body">
+                                <div class="table-toolbar">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="btn-group">
+                                                <a href="#" class="btn btn-primary add_calendar"> ADD NEW EVENT
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                                <br>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <!-- place -->
                                 <div id="calendarIO"></div>
                                 <div class="modal fade" id="create_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -67,7 +95,7 @@
                                                                 <option value="">Choose</option>
                                                                 <option style="color:#0071c5;" value="#0071c5">&#9724; Dark blue</option>
                                                                 <option style="color:#40E0D0;" value="#40E0D0">&#9724; Turquoise</option>
-                                                                <option style="color:#008000;" value="#008000">&#9724; Green</option>
+                                                                <option style="color:#008000;" value="#008000">&#9724; Green</option>                       
                                                                 <option style="color:#FFD700;" value="#FFD700">&#9724; Yellow</option>
                                                                 <option style="color:#FF8C00;" value="#FF8C00">&#9724; Orange</option>
                                                                 <option style="color:#FF0000;" value="#FF0000">&#9724; Red</option>
@@ -108,31 +136,18 @@
                                 </div>
                                 <!-- end place -->
                             </div>
-                            <div class="table-toolbar pull-right">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="btn-group">
-                                            <br>
-                                            <a href="#" class="btn btn-primary add_calendar"> ADD NEW EVENT<i class="fa fa-plus"></i></a>
-                                            <br>
-                                            <br>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
-
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.min.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url().'assets/js/moment.min.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.min.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url().'assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js'; ?>"></script>
-    <script type="text/javascript" src="<?php echo base_url().'assets/plugins/fullcalendar/fullcalendar.js'; ?>"></script>
+    <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.min.js'; ?>"></script>      
+    <script type="text/javascript" src="<?php echo base_url().'assets/js/moment.min.js'; ?>"></script>      
+    <script type="text/javascript" src="<?php echo base_url().'assets/js/bootstrap.min.js'; ?>"></script>      
+    <script type="text/javascript" src="<?php echo base_url().'assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js'; ?>"></script>      
+    <script type="text/javascript" src="<?php echo base_url().'assets/plugins/fullcalendar/fullcalendar.js'; ?>"></script>      
     <script type="text/javascript">
         var get_data        = '<?php echo $get_data; ?>';
         var backend_url     = '<?php echo base_url(); ?>';
@@ -175,7 +190,7 @@
 
         $(document).on('click', '.add_calendar', function(){
             $('#create_modal input[name=calendar_id]').val(0);
-            $('#create_modal').modal('show');
+            $('#create_modal').modal('show');  
         })
 
         $(document).on('submit', '#form_create', function(){
@@ -194,7 +209,7 @@
                 success: function(data)
                 {
                     if(data.status)
-                    {
+                    {   
                         eventData = {
                             id          : data.id,
                             title       : $('#create_modal input[name=title]').val(),
@@ -220,7 +235,7 @@
                     element.find('button[type=submit]').html('Submit');
                     element.find('.alert').css('display', 'block');
                     element.find('.alert').html('Wrong server, please save again');
-                }
+                }         
             });
             return false;
         })
@@ -236,7 +251,7 @@
             {
                 end = start;
             }
-
+         
             $.ajax({
                 url     : backend_url+'calendar/save',
                 type    : 'POST',
@@ -248,19 +263,19 @@
                 success: function(data)
                 {
                     if(data.status)
-                    {
+                    {   
                         $('.notification').removeClass('alert-danger').addClass('alert-primary').find('p').html('Data success update');
                     }
                     else
                     {
                         $('.notification').removeClass('alert-primary').addClass('alert-danger').find('p').html('Data cant update');
                     }
-
+             
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
                     $('.notification').removeClass('alert-primary').addClass('alert-danger').find('p').html('Wrong server, please save again');
-                }
+                }         
             });
         }
 
@@ -281,7 +296,7 @@
                     success: function(data)
                     {
                         if(data.status)
-                        {
+                        {   
                             eventData = {
                                 id          : data.id,
                                 title       : $('#create_modal input[name=title]').val(),
@@ -307,7 +322,7 @@
                         element.find('button[type=submit]').html('Submit');
                         element.find('.alert').css('display', 'block');
                         element.find('.alert').html('Wrong server, please save again');
-                    }
+                    }         
                 });
                 return false;
             })
@@ -342,7 +357,7 @@
                     success: function(data)
                     {
                         if(data.status)
-                        {
+                        {   
                             event.title         = $('#create_modal input[name=title]').val();
                             event.description   = $('#create_modal textarea[name=description]').val();
                             event.start         = moment($('#create_modal input[name=start_date]').val()).format('YYYY-MM-DD HH:mm:ss');
@@ -367,7 +382,7 @@
                         element.find('button[type=submit]').html('Submit');
                         element.find('.alert').css('display', 'block');
                         element.find('.alert').html('Wrong server, please save again');
-                    }
+                    }         
                 });
                 return false;
             })
@@ -387,7 +402,7 @@
                     success: function(data)
                     {
                         if(data.status)
-                        {
+                        {   
                             $('#calendarIO').fullCalendar('removeEvents',event._id);
                             $('#create_modal').modal('hide');
                             $('#form_create')[0].reset();
@@ -404,7 +419,7 @@
                     {
                         $('#form_create').find('.alert').css('display', 'block');
                         $('#form_create').find('.alert').html('Wrong server, please save again');
-                    }
+                    }         
                 });
             })
         }

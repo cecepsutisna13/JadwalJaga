@@ -6,19 +6,19 @@ class Calendar extends CI_Controller {
 	{
 		parent::__construct();
 		$this->table 		= 'calendar';
-		$this->load->model('Calendar_model', 'modeldb');
+		$this->load->model('Globalmodel', 'modeldb'); 
 	}
 
-	public function index()
+	public function index() 
 	{
 		$data_calendar = $this->modeldb->get_list($this->table);
 		$calendar = array();
-		foreach ($data_calendar as $key => $val)
+		foreach ($data_calendar as $key => $val) 
 		{
 			$calendar[] = array(
-							'id' 	=> intval($val->id),
-							'title' => $val->title,
-							'description' => trim($val->description),
+							'id' 	=> intval($val->id), 
+							'title' => $val->title, 
+							'description' => trim($val->description), 
 							'start' => date_format( date_create($val->start_date) ,"Y-m-d H:i:s"),
 							'end' 	=> date_format( date_create($val->end_date) ,"Y-m-d H:i:s"),
 							'color' => $val->color,
@@ -45,7 +45,7 @@ class Calendar extends CI_Controller {
 		        $param['create_at']   	= date('Y-m-d H:i:s');
 		        $insert = $this->modeldb->insert($this->table, $param);
 
-		        if ($insert > 0)
+		        if ($insert > 0) 
 		        {
 		        	$response['status'] = TRUE;
 		    		$response['notif']	= 'Success add calendar';
@@ -58,12 +58,12 @@ class Calendar extends CI_Controller {
 		        }
 			}
 			else
-			{
+			{	
 				$where 		= [ 'id'  => $calendar_id];
 	            $param['modified_at']   	= date('Y-m-d H:i:s');
 	            $update = $this->modeldb->update($this->table, $param, $where);
 
-	            if ($update > 0)
+	            if ($update > 0) 
 	            {
 	            	$response['status'] = TRUE;
 		    		$response['notif']	= 'Success add calendar';
@@ -95,7 +95,7 @@ class Calendar extends CI_Controller {
 			$where = ['id' => $calendar_id];
 	        $delete = $this->modeldb->delete($this->table, $where);
 
-	        if ($delete > 0)
+	        if ($delete > 0) 
 	        {
 	        	$response['status'] = TRUE;
 	    		$response['notif']	= 'Success delete calendar';

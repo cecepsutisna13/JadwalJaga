@@ -1,72 +1,69 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Karyawan extends CI_Controller {
+class Izin extends CI_Controller {
 
 	function __construct(){
 		parent::__construct(); 
 		$this->load->helper('url');
 		$this->load->helper('date');
-		$this->load->model('m_karyawan','karyawan');
+		$this->load->model('m_izin','izin');
 	}
 
 	public function index()
 	{
-		$this->template->load('static','v_karyawan');
+		$this->template->load('static','v_izin');
 	}
 
-	public function select_data()
+	public function select_izin()
 	{
 		header('Content-Type: application/json');
-		echo json_encode($this->karyawan->select());
+		echo json_encode($this->izin->select());
 	}
 
-	public function action_anggota()
+	public function action_izin()
 	{
 		$updated_at = date('Y-m-d H:i:s');
 		$created_at = date('Y-m-d H:i:s');
 		$action = $this->input->post('action');
 		$id = $this->input->post('id');
-		$Kode = $this->input->post('Kode');
 		$Nama = $this->input->post('Nama');
-		$Status = $this->input->post('Status');
-		$Peran = $this->input->post('Peran');
-		$Email = $this->input->post('Email');
+		$Ket = $this->input->post('Ket');
+		$Alasan = $this->input->post('Alasan');
+		$Kode = $this->input->post('Kode');
 		switch ($action) {
 		case 'update':
 				$data = array(
-					"Kode" => $Kode,
 					"Nama" => $Nama,
-					"Status" => $Status,
-					"Peran" => $Peran,
-					"Email" => $Email,
+					"Ket" => $Ket,
+					"Alasan" => $Alasan,
+					"Kode" => $Kode,
 					"updated_at" => $updated_at
 					);
-				$this->karyawan->update($data,$id);
+				$this->izin->update($data,$id);
 			break;
 		case 'delete':
-				$this->karyawan->delete($id);
+				$this->izin->delete($id);
 			break;
 		case 'add':
 				$data = array(
-					"Kode" => $Kode,
 					"Nama" => $Nama,
-					"Status" => $Status,
-					"Peran" => $Peran,
-					"Email" => $Email,
+					"Ket" => $Ket,
+					"Alasan" => $Alasan,
+					"Kode" => $Kode,
 					"created_at" => $created_at,
 					"updated_at" => $updated_at
 					);		
-				$this->karyawan->insert($data);
+				$this->izin->insert($data);
 			break;
 		}
 		header('Content-Type: application/json');
-		echo json_encode($this->karyawan->select());
+		echo json_encode($this->izin->select());
 	}	
 
-	public function update_form(){
+	public function update(){
 		$id = $this->input->post('id');
 		header('Content-Type: application/json');
-		echo json_encode($this->karyawan->select_where_id($id));
+		echo json_encode($this->izin->select_where_id($id));
 	}
 }

@@ -56,11 +56,11 @@
 
   
     <!-- Navigation -->
-    <nav class="navbar navbar-default" id="mainNav">
+    <nav class="navbar navbar-inverse" id="mainNav">
       <div class="container-fluid">
 		<div class="navbar-header">
 			  <a class="navbar-brand" href="#">
-				<img src="...">
+				<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
 			  </a>
 			  <a class="navbar-text">REKA SINERGI PRATAMA</a>
 		</div>
@@ -71,13 +71,22 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="nav nav-tabs nav-justified">
             <li class="nav-item">
-              <a class="nav-link" href="Home">Home</a>
+              <a class="nav-link" href="Home">
+			  <span class="glyphicon glyphicon-calendar" aria-hidden="true">
+			  Calendar
+			  </span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Karyawan">Data</a>
+              <a class="nav-link" href="Karyawan">
+			  <span class="glyphicon glyphicon-pencil" aria-hidden="true">
+			  Data
+			  </span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Statistik">Statistik</a>
+              <a class="nav-link" href="Izin">
+			  <span class="glyphicon glyphicon-stats" aria-hidden="true">
+			  Statistik
+			  </span></a>
             </li>
           </ul>
         </div>

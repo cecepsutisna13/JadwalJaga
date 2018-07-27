@@ -51,7 +51,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['action_anggota'] = 'karyawan/action_anggota';
+$route['action_izin'] = 'izin/action_izin';
 $route['update_form'] = 'karyawan/update_form';
+$route['update'] = 'izin/update';
 $route['select_data'] = 'karyawan/select_data';
+$route['select_izin'] = 'izin/select_izin';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

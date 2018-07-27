@@ -1,8 +1,35 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-?>
-<!DOCTYPE html>
+?><!DOCTYPE html>
 <html>
+	<head>
+		<title>CRUD_CI_Bootrstrap_Modals_AJAX</title>
+		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		<link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
+		<link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
+		<link rel="stylesheet" href="assets/dist/css/sweetalert.css">
+		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script> <!-- lib js untuk ajax -->
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script> <!-- lib js untuk modals -->
+		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script> <!-- lib js untuk datatables -->
+		<script src="assets/plugins/datatables/dataTables.bootstrap.min.js"></script> <!-- lib js untuk datatables -->
+		<script src="assets/dist/js/sweetalert.min.js"></script> <!-- lib js untuk sweet alert -->		
+		<style>
+			body{
+			width: 100%;
+			height: 800px;
+			margin: 10px auto;
+			};	
+			section{
+				width: 900px;
+			};
+			form .button-group{
+				text-align: right;
+			}		
+		</style> 
+	</head>
 	<body>
 		<div >
 			<section class="content">
@@ -11,86 +38,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<!-- box box-primary -->
 						<div class="box box-primary">
 							<!-- modal dialog-->
-							<div class="modal fade" id="mymodaladd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-							  <div class="modal-dialog">
-							    <div class="modal-content">
-								      <div class="modal-header">
-								        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								        <h4 class="modal-title" id="myModalLabel">Tambah Data Karyawan</h4>
-								      </div>
-								      <div class="modal-body">
-									  <div class="form-group">
-							                  <label>Kode</label>
-							                  <input type="text" class="form-control" name="add_kode" placeholder="Kode">
-							                </div>
-							                <div class="form-group">
-							                  <label>Nama</label>
-							                  <input type="text" class="form-control" name="add_nama" placeholder="Nama">
-							                </div>
-							                <div class="form-group">
-							                  <label>Email</label>
-							                    <input type="Email" class="form-control" name="add_email" placeholder="Email">
-							                </div>
-							                <div class="form-group">
-							                  <label>Peran</label>
-											  <select class="form-control" name="add_peran" >
-							                      <option value="Administrator">Administrator</option>
-							                      <option value="Developer">Developer</option>
-												  <option value="Support">Support</option>
-							                  </select>
-							                </div>
-											<div class="form-group">
-							                  <label>Status</label>
-							                  <select class="form-control" name="add_status" >
-							                      <option value="Primary">Primary</option>
-							                      <option value="Secondary">Secondary</option>
-												  <option value="null">Null</option>
-							                  </select>
-							                </div>
-								      </div>
-								      <div class="modal-footer">
-									      <button type="submit" class="btn btn-success" data-dismiss="modal" id="add_action">Simpan</button>
-									      <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-								      </div>						      
-							    </div>
-							  </div>
-							</div>
 							<div class="modal fade" id="mymodalupdate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							  <div class="modal-dialog">
 							    <div class="modal-content">
 								      <div class="modal-header">
 								        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-								        <h4 class="modal-title" id="myModalLabel">Ubah Data Karyawan</h4>
+								        <h4 class="modal-title" id="myModalLabel">Sesuaikan Data Izin</h4>
 								      </div>
 								      <div class="modal-body">
-											<div class="form-group">
-							                  <label>Kode</label>
-							                  <input type="text" class="form-control" name="update_kode" placeholder="Kode">
-							                </div>
 							                <div class="form-group">
 							                  <label>Nama</label>
 							                  <input type="hidden" class="form-control" name="update_id">
 							                  <input type="text" class="form-control" name="update_nama" placeholder="Nama">
 							                </div>
 							                <div class="form-group">
-							                  <label>Email</label>
-							                    <input type="Email" class="form-control" name="update_email" placeholder="Email">
+							                  <label>Keterangan</label>
+							                  <select class="form-control" name="update_keterangan" >
+							                      <option value="Izin">Izin</option>
+							                      <option value="Sakit">Sakit</option>
+												  <option value="Tugas_Kantor">Tugas Kantor</option>
+							                  </select>
 							                </div>
-							                <div class="form-group">
-							                  <label>Peran</label>
-											  <select class="form-control" name="update_peran" >
-							                      <option value="Administrator">Administrator</option>
-							                      <option value="Developer">Developer</option>
-												  <option value="Support">Support</option>
-							                  </select>
-										   </div>
 											<div class="form-group">
-							                  <label>Status</label>
-							                  <select class="form-control" name="update_status" >
-							                      <option value="Primary">Primary</option>
-							                      <option value="Secondary">Secondary</option>
-												  <option value="null">Null</option>
-							                  </select>
+							                  <label>Alasan</label>
+							                  <input type="text" class="form-control" name="update_alasan" placeholder="Alasan">
 							                </div>
 								      </div>
 								      <div class="modal-footer">
@@ -101,11 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							  </div>
 							</div>    			
 							<!-- /modal dialog-->					
-							<!-- box-header -->
-							<div class="box-header with-border">
-								<button class="btn btn-primary tambah-form" data-toggle="modal" data-target="#mymodaladd"><i class="fa fa-plus"></i>Tambah</button>
-							</div>
-							<!-- /box-header -->					
+										
 							<!-- view data -->
 			                <div class="box-body">
 								<table id="tabel_data_pegawai" class="table table-bordered table-striped">
@@ -114,9 +81,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											<th>Id</th>
 											<th>Kode</th>
 											<th>Nama</th>
-											<th>Email</th>
-											<th>Peran</th>
-											<th>Status</th>
+											<th>Tanggal</th>
+											<th>Keterangan</th>
+											<th>Alasan</th>
 											<th>Action</th>
 										</tr>
 									</thead>
@@ -129,13 +96,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div> <!-- /.row -->
 			</section><!-- /.content -->
 		</div>
-		
-		
 		<script type="text/javascript">
 			var t = $('#tabel_data_pegawai').DataTable({
 					  "autoWidth": false,
 					  "rowCallback": function( row, data, index ) {
-						  $('td:eq(5)', row).html("<button class=\"btn btn-warning\" data-toggle=\"modal\" data-target=\"#mymodalupdate\" onclick='handleClickUpdate("+data[0]+");'><i class=\"fa fa-edit\"></i>Ubah</button>&nbsp;&nbsp;<button class=\"btn btn-danger\"  data-toggle=\"modal\" onclick='handleClickDelete("+data[0]+");'><i class=\"fa fa-trash\"></i>Hapus</button>");
+						  $('td:eq(5)', row).html("<button class=\"btn btn-warning\" data-toggle=\"modal\" data-target=\"#mymodalupdate\" onclick='handleClickUpdate("+data[0]+");'><i class=\"fa fa-edit\"></i>Ubah</button>");
 					  },			  
 					  "columnDefs": [
 		    				{ "width": "2%", sClass: "dt-head-center dt-body-center", "visible": false, "targets": 0 },
@@ -156,11 +121,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				}
 			}
 
-			
 			function handleClickUpdate(id){
 				$.ajax({
 					dataType: "json", 
-					url:"update_form",
+					url:"update",
 					type:"POST",
 				    contentType: false,
 				    processData: false,     
@@ -171,21 +135,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				    }(),
 				    success:function(data){
 				        $("input[name=\"update_id\"]").val(data[0].id);
-						$("input[name=\"update_kode\"]").val(data[0].Kode);
 			  			$("input[name=\"update_nama\"]").val(data[0].Nama);
-			  			$("select[name=\"update_status\"]").val(data[0].Status);
-			  			$("select[name=\"update_peran\"]").val(data[0].Peran);
-			  			$("input[name=\"update_email\"]").val(data[0].Email);
+			  			$("select[name=\"update_keterangan\"]").val(data[0].Ket);
+			  			$("input[name=\"update_alasan\"]").val(data[0].Alasan);
+			  			$("input[name=\"update_email\"]").val(data[0].Kode);
 				        console.log(JSON.stringify(data));
 					}
 				})			
-			} 
-
+			}
 			
 			function handleClickDelete(id){
 					swal({
 					  title: "Apa kamu yakin?",
-					  text: "Data yang terhapus tidak bisa dikembalikan!",
+					  text: "Kamu tidak akan bisa mengembalikan data yang sudah terhapus!",
 					  type: "warning",
 					  showCancelButton: true,
 					  confirmButtonClass: "btn-danger",
@@ -195,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					function(){
 						$.ajax({
 							dataType: "json", 
-							url:"action_anggota",
+							url:"action_izin",
 							type:"POST",
 						    contentType: false,
 						    processData: false,     
@@ -212,8 +174,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					  swal("Terhapus!", "Data berhasil dihapus.", "success");
 					});			
 			}
-			
-			
+
 			function add_data_to_table_t(table, data){
 		  	  	table.clear().draw();
 		  	  	table.rows.add(data).draw( false );
@@ -221,7 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			function refresh_tabel(){
 				$.ajax({
-					url:"karyawan/select_data",
+					url:"izin/select_izin",
 					dataType: "json", 
 			        success:function(data){
 			        	add_data_to_table_t(t, data);
@@ -238,25 +199,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				});	
 				
 			  	$("#add_action").click(function(){
-					var Kode = $("input[name=\"add_kode\"]").val();
 			  		var Nama = $("input[name=\"add_nama\"]").val();
-			  		var Status = $("select[name=\"add_status\"]").val();
-			  		var Peran = $("select[name=\"add_peran\"]").val();
-			  		var Email = $("input[name=\"add_email\"]").val();
+			  		var Ket = $("select[name=\"add_keterangan\"]").val();
+			  		var Alasan = $("input[name=\"add_alasan\"]").val();
+			  		var Kode = $("input[name=\"add_email\"]").val();
 					$.ajax({
 						dataType: "json", 
-						url:"action_anggota",
+						url:"action",
 						type:"POST",
 				        contentType: false,
 				        processData: false,    
 						data: function() {
 					        var data = new FormData();
 					        data.append("action", "add");
-							data.append("Kode", Kode);
 					        data.append("Nama", Nama);
-					        data.append("Status", Status);
-					        data.append("Peran", Peran);
-					        data.append("Email", Email);
+					        data.append("Ket", Ket);
+					        data.append("Alasan", Alasan);
+					        data.append("Kode", Kode);
 					        return data;
 				        }(),
 				        success:function(data){
@@ -267,14 +226,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			  	$("#update_action").click(function(){
 			  		var id = $("input[name=\"update_id\"]").val();
-					var Kode = $("input[name=\"update_kode\"]").val();
 			  		var Nama = $("input[name=\"update_nama\"]").val();
-			  		var Status = $("select[name=\"update_status\"]").val();
-			  		var Peran = $("select[name=\"update_peran\"]").val();
-			  		var Email = $("input[name=\"update_email\"]").val();
+			  		var Ket = $("select[name=\"update_keterangan\"]").val();
+			  		var Alasan = $("input[name=\"update_alasan\"]").val();
+			  		var Kode = $("input[name=\"update_email\"]").val();
 					$.ajax({
 						dataType: "json", 
-						url:"action_anggota",
+						url:"action_izin",
 						type:"POST",
 				        contentType: false,
 				        processData: false,     
@@ -282,11 +240,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					        var data = new FormData();
 					        data.append("action", "update");
 					        data.append("id", id);
-							data.append("Kode", Kode);
 					        data.append("Nama", Nama);
-					        data.append("Status", Status);
-					        data.append("Peran", Peran);
-					        data.append("Email", Email);
+					        data.append("Ket", Ket);
+					        data.append("Alasan", Alasan);
+					        data.append("Kode", Kode);
 					        return data;
 				        }(),
 				        success:function(data){
@@ -295,6 +252,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					})		  		
 				});		
 			});	
-		</script>
+		</script>	
 	</body>
 </html>

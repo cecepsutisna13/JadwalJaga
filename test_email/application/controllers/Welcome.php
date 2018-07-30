@@ -23,7 +23,7 @@ class Welcome extends CI_Controller {
 	$this->load->library('email');
 
 	$this->email->from('kusumawira98@gmail.com', 'wirakw');
-	$this->email->to('cecep.sutisna.tif16@polban.ac.id');
+	$this->email->to('panglimas100@gmail.com');
 	$this->email->subject('Test Email using SendGrid');
 	$this->email->message('This email was delivered by your friends at SendGrid');
 

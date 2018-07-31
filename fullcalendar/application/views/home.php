@@ -47,20 +47,14 @@
                         <input type="hidden" id="end">
                           <div class="row form-group">
                                 <div class="col-md-4">
-                                    <input id="title" name="title" type="text" class="form-control input-md" placeholder="nama"/>
+                                    <input id="title" name="title" type="text" class="form-control input-md" placeholder="insert primary dev"/>
                                     <input id="status" name="status" type="text" value="primary" hidden="true"/>
-                                </div>
-                                <div class="col-md-8">
-                                    <textarea class="form-control" id="description" name="description" placeholder="keterangan"></textarea>
                                 </div>
                           </div>
                           <div class="row form-group">
                                 <div class="col-md-4">
-                                    <input id="title2" name="title2" type="text" class="form-control input-md" placeholder="nama"/>
+                                    <input id="title2" name="title2" type="text" class="form-control input-md" placeholder="insert secondary dev"/>
                                     <input id="status2" name="status2" type="text" value="secondary" hidden="true"/>
-                                </div>
-                                <div class="col-md-8">
-                                    <textarea class="form-control" id="description2" name="description2" placeholder="keterangan"></textarea>
                                 </div>
                           </div>
                                     <input id="color" name="color" type="text" value="#ff8000" hidden="true"/>
@@ -73,7 +67,7 @@
                 </div>
             </div>
         </div>
-        <div class="modal1 fade" id="modal1">
+        <div class="modal fade" id="modal1">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -87,16 +81,17 @@
                         <input type="hidden" id="end">
                           <div class="row form-group">
                                 <div class="col-md-4">
-                                    <input id="title" name="title" type="text" class="form-control input-md" placeholder="nama"/>
-                                    <input id="status" name="status" type="text" value="primary" hidden="true"/>
+                                    <input id="title_update" name="title_update" type="text" class="form-control input-md" placeholder="nama" readonly="true"/>
+                                    <!-- <input id="status" name="status" type="text" hidden="true"/> -->
                                 </div>
+                                <div class="text-center col-md-4"><img style="height:40px; width:160px" src="<?php echo base_url();?>assets/img/arrow.png" class="img-rounded" alt="Cinque Terre"></div>
                                 <div class="col-md-4">
-                                    <input id="title2" name="title2" type="text" class="form-control input-md" placeholder="nama"/>
+                                    <input id="pengganti" name="pengganti" type="text" class="form-control input-md" placeholder="nama"/>
                                 </div>
                           </div>
                                   <textarea class="form-control" id="description" name="description" placeholder="keterangan"></textarea>
-                                    <input id="color" name="color" type="text" value="#ff8000" hidden="true"/>
-                                    <input id="color2" name="color2" type="text" value="#ff9900" hidden="true"/>
+                                    <!-- <input id="color" name="color" type="text" value="#ff8000" hidden="true"/>
+                                    <input id="color2" name="color2" type="text" value="#ff9900" hidden="true"/> -->
                         </form>
                     </div>
                     <div class="modal-footer">

@@ -15,8 +15,8 @@ class Calendar_model extends CI_Model {
 
 	Public function addEvent()
 	{
-	$sql = "INSERT INTO events (title,status,events.start,events.end,description, color) VALUES (?,?,?,?,?,?)";
-	$this->db->query($sql, array($_POST['title'],$_POST['status'],$_POST['start'],$_POST['end'], $_POST['description'], $_POST['color']));
+	$sql = "INSERT INTO events (title,status,events.start,events.end, color) VALUES (?,?,?,?,?)";
+	$this->db->query($sql, array($_POST['title'],$_POST['status'],$_POST['start'],$_POST['end'], $_POST['color']));
 		return ($this->db->affected_rows()!=1)?false:true;
 	}
 
@@ -25,8 +25,8 @@ class Calendar_model extends CI_Model {
 	Public function updateEvent()
 	{
 
-	$sql = "UPDATE events SET title = ?, status = ?, description = ?, color = ? WHERE id = ?";
-	$this->db->query($sql, array($_POST['title'],$_POST['status'],$_POST['description'], $_POST['color'], $_POST['id']));
+	$sql = "UPDATE events SET title = ?, pengganti = ?, description = ? WHERE id = ?";
+	$this->db->query($sql, array($_POST['title'],$_POST['pengganti'],$_POST['description'], $_POST['id']));
 		return ($this->db->affected_rows()!=1)?false:true;
 	}
 

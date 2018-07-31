@@ -1,2 +1,0 @@
-<?php
-echo "SELAMAT DATANG"; ?>

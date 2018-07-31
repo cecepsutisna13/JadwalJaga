@@ -71,7 +71,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="nav nav-tabs nav-justified">
             <li class="nav-item">
-              <a class="nav-link" href="Home">
+              <a class="nav-link" href="Calendar">
 			  <span class="glyphicon glyphicon-calendar" aria-hidden="true">
 			  Calendar
 			  </span></a>

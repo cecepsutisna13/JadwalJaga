@@ -7,8 +7,8 @@ class Calendar extends CI_Controller {
     {
         // Call the Model constructor
         parent::__construct();
-		$this->load->helper('url');
-        $this->load->model('m_calendar','calendar');
+
+        $this->load->model('m_calendar');
     }
 
 

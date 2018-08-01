@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="text-center col-md-4"><img style="height:40px; width:160px" src="<?php echo base_url();?>assets/img/arrow.png" class="img-rounded" alt="Cinque Terre"></div>
                                 <div class="col-md-4">
-                                    <input id="pengganti" name="pengganti" type="text" class="form-control input-md" placeholder="nama"/>
+                                    <input id="dev_sebelumnya" name="dev_sebelumnya" type="text" class="form-control input-md" placeholder="nama"/>
                                 </div>
                           </div>
                                   <textarea class="form-control" id="description" name="description" placeholder="keterangan"></textarea>

@@ -146,6 +146,7 @@ $(function(){
       $('.modal-footer button:not(".btn-default")').remove();
       // Set input values
       $('#title_update').val(data.event ? data.event.title : '');
+      $('#dev_sebelumnya').val(data.event ? data.event.dev_sebelumnya : '');
       $('#description').val(data.event ? data.event.description : '');
       // Create Butttons
       $.each(data.buttons, function(index, button){
@@ -187,11 +188,11 @@ $(function(){
 
     // Handle click on Update Button
     $('#modal1').on('click', '#update-event',  function(e){
-        if(validator(['pengganti'])) {
+        if(validator(['dev_sebelumnya'])) {
             $.post(base_url+'calendar/updateEvent', {
                 id: currentEvent._id,
-                title: $('#pengganti').val(),
-                pengganti : $('#title_update').val(),
+                title: $('#dev_sebelumnya').val(),
+                dev_sebelumnya : $('#title_update').val(),
                 description: $('#description').val(),
             }, function(result){
                 $('.alert').addClass('alert-success').text('Event updated successfuly');

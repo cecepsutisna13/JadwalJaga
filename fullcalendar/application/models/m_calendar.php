@@ -25,8 +25,8 @@ class m_calendar extends CI_Model {
 	Public function updateEvent()
 	{
 
-	$sql = "UPDATE events SET title = ?, pengganti = ?, description = ? WHERE id = ?";
-	$this->db->query($sql, array($_POST['title'],$_POST['pengganti'],$_POST['description'], $_POST['id']));
+	$sql = "UPDATE events SET title = ?, dev_sebelumnya = ?, description = ? WHERE id = ?";
+	$this->db->query($sql, array($_POST['title'],$_POST['dev_sebelumnya'],$_POST['description'], $_POST['id']));
 		return ($this->db->affected_rows()!=1)?false:true;
 	}
 

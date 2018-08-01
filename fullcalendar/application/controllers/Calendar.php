@@ -7,46 +7,46 @@ class Calendar extends CI_Controller {
     {
         // Call the Model constructor
         parent::__construct();
-
-        $this->load->model('Calendar_model');
+		$this->load->helper('url');
+        $this->load->model('m_calendar','calendar');
     }
 
 
 	/*Home page Calendar view  */
 	Public function index()
 	{
-		$this->load->view('home');
+		$this->template->load('static','v_calendar');
 	}
 
 	/*Get all Events */
 
 	Public function getEvents()
 	{
-		$result=$this->Calendar_model->getEvents();
+		$result=$this->m_calendar->getEvents();
 		echo json_encode($result);
 	}
 	/*Add new event */
 	Public function addEvent()
 	{
-		$result=$this->Calendar_model->addEvent();
+		$result=$this->m_calendar->addEvent();
 		echo $result;
 	}
 	/*Update Event */
 	Public function updateEvent()
 	{
-		$result=$this->Calendar_model->updateEvent();
+		$result=$this->m_calendar->updateEvent();
 		echo $result;
 	}
 	/*Delete Event*/
 	Public function deleteEvent()
 	{
-		$result=$this->Calendar_model->deleteEvent();
+		$result=$this->m_calendar->deleteEvent();
 		echo $result;
 	}
 	Public function dragUpdateEvent()
 	{
 
-		$result=$this->Calendar_model->dragUpdateEvent();
+		$result=$this->m_calendar->dragUpdateEvent();
 		echo $result;
 	}
 

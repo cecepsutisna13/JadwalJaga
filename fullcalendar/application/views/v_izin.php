@@ -2,34 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html>
-	<head>
-		<title>CRUD_CI_Bootrstrap_Modals_AJAX</title>
-		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-		<link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
-		<link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
-		<link rel="stylesheet" href="assets/dist/css/sweetalert.css">
-		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script> <!-- lib js untuk ajax -->
-		<script src="assets/bootstrap/js/bootstrap.min.js"></script> <!-- lib js untuk modals -->
-		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script> <!-- lib js untuk datatables -->
-		<script src="assets/plugins/datatables/dataTables.bootstrap.min.js"></script> <!-- lib js untuk datatables -->
-		<script src="assets/dist/js/sweetalert.min.js"></script> <!-- lib js untuk sweet alert -->		
-		<style>
-			body{
-			width: 100%;
-			height: 800px;
-			margin: 10px auto;
-			};	
-			section{
-				width: 900px;
-			};
-			form .button-group{
-				text-align: right;
-			}		
-		</style> 
-	</head>
 	<body>
 		<div >
 			<section class="content">
@@ -46,14 +18,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								        <h4 class="modal-title" id="myModalLabel">Sesuaikan Data Izin</h4>
 								      </div>
 								      <div class="modal-body">
+									  <div class="form-group">
+							                  <label>Kode</label>
+							                  <input type="text" class="form-control" name="update_kode" placeholder="Kode" readonly="true">
+							                </div>
 							                <div class="form-group">
 							                  <label>Nama</label>
 							                  <input type="hidden" class="form-control" name="update_id">
-							                  <input type="text" class="form-control" name="update_nama" placeholder="Nama">
+							                  <input type="text" class="form-control" name="update_nama" placeholder="Nama" readonly="true">
 							                </div>
 							                <div class="form-group">
 							                  <label>Keterangan</label>
-							                  <select class="form-control" name="update_keterangan" >
+							                  <select class="form-control" name="update_keterangan">
 							                      <option value="Izin">Izin</option>
 							                      <option value="Sakit">Sakit</option>
 												  <option value="Tugas_Kantor">Tugas Kantor</option>
@@ -138,7 +114,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  			$("input[name=\"update_nama\"]").val(data[0].Nama);
 			  			$("select[name=\"update_keterangan\"]").val(data[0].Ket);
 			  			$("input[name=\"update_alasan\"]").val(data[0].Alasan);
-			  			$("input[name=\"update_email\"]").val(data[0].Kode);
+			  			$("input[name=\"update_kode\"]").val(data[0].Kode);
 				        console.log(JSON.stringify(data));
 					}
 				})			
@@ -202,7 +178,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  		var Nama = $("input[name=\"add_nama\"]").val();
 			  		var Ket = $("select[name=\"add_keterangan\"]").val();
 			  		var Alasan = $("input[name=\"add_alasan\"]").val();
-			  		var Kode = $("input[name=\"add_email\"]").val();
+			  		var Kode = $("input[name=\"add_kode\"]").val();
 					$.ajax({
 						dataType: "json", 
 						url:"action",
@@ -229,7 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  		var Nama = $("input[name=\"update_nama\"]").val();
 			  		var Ket = $("select[name=\"update_keterangan\"]").val();
 			  		var Alasan = $("input[name=\"update_alasan\"]").val();
-			  		var Kode = $("input[name=\"update_email\"]").val();
+			  		var Kode = $("input[name=\"update_kode\"]").val();
 					$.ajax({
 						dataType: "json", 
 						url:"action_izin",

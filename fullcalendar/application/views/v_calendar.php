@@ -19,17 +19,15 @@
 
         <!--   kalendar js -->
         <script src='<?php echo base_url();?>assets/js/main.js'></script>
-
-
     </head>
     <body>
-
+		<div class="box box-primary">
         <div class="container">
                 <!-- Notification -->
                 <div class="alert"></div>
             <div class="row clearfix">
                 <div class="col-md-12 column">
-                        <div id='calendar'></div>
+                        <div id='calendar' style="background-color=white"></div>
                 </div>
             </div>
         </div>
@@ -100,5 +98,6 @@
                 </div>
             </div>
         </div>
+	</div>
     </body>
 </html>

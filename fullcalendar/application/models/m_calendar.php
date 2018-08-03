@@ -3,6 +3,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class m_calendar extends CI_Model {
 
+	public function __construct()
+	{
+    	parent::__construct();
+	}
+
+	function get_karyawan()
+	{
+    	$query = $this->db->query('SELECT Nama FROM t_anggota');
+    	return $this->db->query($query)->result();
+	}
 
 /*Read the data from DB */
 	Public function getEvents()

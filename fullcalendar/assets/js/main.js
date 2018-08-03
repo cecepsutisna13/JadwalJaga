@@ -19,9 +19,10 @@ $(function(){
         events: base_url+'calendar/getEvents',
         selectable: true,
         selectHelper: true,
-        editable: true, // Make the event resizable true
+        editable: false, // Make the event resizable true
         displayEventTime: false,
         eventOrder: "status",
+        dayNamesShort: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],//nama default dari hari
             select: function(start, end) {
 
                 $('#start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));

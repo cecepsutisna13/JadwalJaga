@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="modal fade" id="modal">
-            <div class="modal-dialog">
+            <div class="modal-dialog" style="height:100px;width:300px;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -41,18 +41,18 @@
                     <div class="modal-body">
                         <div class="error"></div>
                         <form class="form-horizontal" id="crud-form">
-                        <input type="hidden" id="start">
-                        <input type="hidden" id="end">
+                        <input type="hidden" id="start"/>
+                        <input type="hidden" id="end"/>
                           <div class="row form-group">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <input id="title" name="title" type="text" class="form-control input-md" placeholder="insert primary dev"/>
-                                    <input id="status" name="status" type="text" value="primary" hidden="true"/>
+                                    <input id="status" value="primary" type="hidden"/>
                                 </div>
                           </div>
                           <div class="row form-group">
-                                <div class="col-md-4">
+                                <div class="col-md-12">
                                     <input id="title2" name="title2" type="text" class="form-control input-md" placeholder="insert secondary dev"/>
-                                    <input id="status2" name="status2" type="text" value="secondary" hidden="true"/>
+                                    <input id="status2" value="secondary" type="hidden"/>
                                 </div>
                           </div>
                                     <input id="color" name="color" type="text" value="#ff8000" hidden="true"/>

@@ -55,8 +55,8 @@
                                     <input id="status2" value="secondary" type="hidden"/>
                                 </div>
                           </div>
-                                    <input id="color" name="color" type="text" value="#ff8000" hidden="true"/>
-                                    <input id="color2" name="color2" type="text" value="#ff9900" hidden="true"/>
+                                    <input id="color" name="color" value="#094cb7" type="hidden"/>
+                                    <input id="color2" name="color2" value="#6298ef" type="hidden"/>
                         </form>
                     </div>
                     <div class="modal-footer">

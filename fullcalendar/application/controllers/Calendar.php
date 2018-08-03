@@ -11,12 +11,13 @@ class Calendar extends CI_Controller {
         $this->load->model('m_calendar');
     }
 
+	public function index()
+	{
+		$data['Calendar'] = $this->m_calendar->tampil_data();
+		$this->template->load('static','v_calendar',$data);
+	}
 
 	/*Home page Calendar view  */
-	Public function index()
-	{
-		$this->template->load('static','v_calendar');
-	}
 
 	/*Get all Events */
 

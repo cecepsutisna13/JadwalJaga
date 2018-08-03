@@ -8,10 +8,10 @@ class m_calendar extends CI_Model {
     	parent::__construct();
 	}
 
-	function get_karyawan()
+	public function tampil_data()
 	{
-    	$query = $this->db->query('SELECT Nama FROM t_anggota');
-    	return $this->db->query($query)->result();
+		$query = $this->db->get('t_anggota');
+		return $query;
 	}
 
 /*Read the data from DB */

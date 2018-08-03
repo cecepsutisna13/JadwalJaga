@@ -49,6 +49,16 @@
                                     <input id="status" value="primary" type="hidden"/>
                                 </div>
                           </div>
+						  <div class="row form-group">
+						  <select name="title" id="title">
+									<option> - Pilih Pelanggan -</option>
+										<?php
+											foreach ($Calendar->result() as $baris) {
+											echo "<option value='".$baris->id."'>".$baris->Nama."</option>";
+											}
+										?>
+						</select>
+						</div>
                           <div class="row form-group">
                                 <div class="col-md-12">
                                     <input id="title2" name="title2" type="text" class="form-control input-md" placeholder="insert secondary dev"/>

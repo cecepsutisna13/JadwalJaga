@@ -261,7 +261,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					        return data;
 				        }(),
 				        success:function(data){
-				        	add_data_to_table_t(t, data);
+							$("input[name=\"add_kode\"]").val(data[0].Kode);
+			  				$("input[name=\"add_nama\"]").val(data[0].Nama);
+			  				$("select[name=\"add_status\"]").val();
+			  				$("select[name=\"add_peran\"]").val();
+			  				$("input[name=\"add_email\"]").val(data[0].Email);
+							add_data_to_table_t(t, data);
 						}
 					});	  		
 				});	

@@ -64,7 +64,8 @@ class User_Authentication extends CI_Controller
         $data['userData'] = $this->session->userdata('userData');
        
         //load user profile view
-        $this->template->load('static','profile',$data);
+        $this->load->view('/user_authentication/profile',$data);
+		
     }
 		
 

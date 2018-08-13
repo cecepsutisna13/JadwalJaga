@@ -1,35 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+if(!$this->session->userdata('status')){
+		redirect('/user_authentication/');
+}
 ?><!DOCTYPE html>
 <html>
-	<head>
-		<title>CRUD_CI_Bootrstrap_Modals_AJAX</title>
-		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-		<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-		<link rel="stylesheet" href="assets/plugins/datatables/dataTables.bootstrap.css">
-		<link href="assets/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="assets/dist/css/AdminLTE.min.css">
-		<link rel="stylesheet" href="assets/dist/css/sweetalert.css">
-		<script src="assets/plugins/jQuery/jQuery-2.1.4.min.js"></script> <!-- lib js untuk ajax -->
-		<script src="assets/bootstrap/js/bootstrap.min.js"></script> <!-- lib js untuk modals -->
-		<script src="assets/plugins/datatables/jquery.dataTables.min.js"></script> <!-- lib js untuk datatables -->
-		<script src="assets/plugins/datatables/dataTables.bootstrap.min.js"></script> <!-- lib js untuk datatables -->
-		<script src="assets/dist/js/sweetalert.min.js"></script> <!-- lib js untuk sweet alert -->		
-		<style>
-			body{
-			width: 100%;
-			height: 800px;
-			margin: 10px auto;
-			};	
-			section{
-				width: 900px;
-			};
-			form .button-group{
-				text-align: right;
-			}		
-		</style> 
-	</head>
 	<body>
 		<div >
 			<section class="content">
@@ -46,14 +21,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								        <h4 class="modal-title" id="myModalLabel">Sesuaikan Data Izin</h4>
 								      </div>
 								      <div class="modal-body">
+									  <div class="form-group">
+							                  <label>Kode</label>
+							                  <input type="text" class="form-control" name="update_kode" placeholder="Kode" readonly="true">
+							                </div>
 							                <div class="form-group">
 							                  <label>Nama</label>
 							                  <input type="hidden" class="form-control" name="update_id">
-							                  <input type="text" class="form-control" name="update_nama" placeholder="Nama">
+							                  <input type="text" class="form-control" name="update_nama" placeholder="Nama" readonly="true">
 							                </div>
 							                <div class="form-group">
 							                  <label>Keterangan</label>
-							                  <select class="form-control" name="update_keterangan" >
+							                  <select class="form-control" name="update_keterangan">
 							                      <option value="Izin">Izin</option>
 							                      <option value="Sakit">Sakit</option>
 												  <option value="Tugas_Kantor">Tugas Kantor</option>
@@ -67,12 +46,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								      <div class="modal-footer">
 									      <button type="submit" class="btn btn-success" data-dismiss="modal" id = "update_action">Ubah</button>
 									      <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-								      </div>						      
+								      </div>
 							    </div>
 							  </div>
-							</div>    			
-							<!-- /modal dialog-->					
-										
+							</div>
+							<!-- /modal dialog-->
+
 							<!-- view data -->
 			                <div class="box-body">
 								<table id="tabel_data_pegawai" class="table table-bordered table-striped">
@@ -87,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 											<th>Action</th>
 										</tr>
 									</thead>
-								</table>                   
+								</table>
 			                </div><!-- /.box-body -->
 							<!-- /view data -->
 						</div>
@@ -101,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					  "autoWidth": false,
 					  "rowCallback": function( row, data, index ) {
 						  $('td:eq(5)', row).html("<button class=\"btn btn-warning\" data-toggle=\"modal\" data-target=\"#mymodalupdate\" onclick='handleClickUpdate("+data[0]+");'><i class=\"fa fa-edit\"></i>Ubah</button>");
-					  },			  
+					  },
 					  "columnDefs": [
 		    				{ "width": "2%", sClass: "dt-head-center dt-body-center", "visible": false, "targets": 0 },
 		    				{ "width": "10%", sClass: "dt-head-center dt-body-center", "targets": 1 },
@@ -110,7 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		    				{ "width": "15%", sClass: "dt-head-center dt-body-center", "targets": 4 },
 		    				{ "width": "20%", sClass: "dt-head-center dt-body-center", "targets": 5 }
 		  				]
-					});	
+					});
 
 			function getDataOnJSON(data, id) {
 				for(var i = 0; i < data.length; i++)
@@ -123,11 +102,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 			function handleClickUpdate(id){
 				$.ajax({
-					dataType: "json", 
+					dataType: "json",
 					url:"update",
 					type:"POST",
 				    contentType: false,
-				    processData: false,     
+				    processData: false,
 					data: function() {
 				        var data = new FormData();
 				        data.append("id", id);
@@ -138,12 +117,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			  			$("input[name=\"update_nama\"]").val(data[0].Nama);
 			  			$("select[name=\"update_keterangan\"]").val(data[0].Ket);
 			  			$("input[name=\"update_alasan\"]").val(data[0].Alasan);
-			  			$("input[name=\"update_email\"]").val(data[0].Kode);
+			  			$("input[name=\"update_kode\"]").val(data[0].Kode);
 				        console.log(JSON.stringify(data));
 					}
-				})			
+				})
 			}
-			
+
 			function handleClickDelete(id){
 					swal({
 					  title: "Apa kamu yakin?",
@@ -156,11 +135,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					},
 					function(){
 						$.ajax({
-							dataType: "json", 
+							dataType: "json",
 							url:"action_izin",
 							type:"POST",
 						    contentType: false,
-						    processData: false,     
+						    processData: false,
 							data: function() {
 						        var data = new FormData();
 						        data.append("action", "delete");
@@ -170,45 +149,45 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						    success:function(data){
 						    	add_data_to_table_t(t, data);
 							}
-						})				
+						})
 					  swal("Terhapus!", "Data berhasil dihapus.", "success");
-					});			
+					});
 			}
 
 			function add_data_to_table_t(table, data){
 		  	  	table.clear().draw();
 		  	  	table.rows.add(data).draw( false );
-			}		
+			}
 
 			function refresh_tabel(){
 				$.ajax({
 					url:"izin/select_izin",
-					dataType: "json", 
+					dataType: "json",
 			        success:function(data){
 			        	add_data_to_table_t(t, data);
 				        console.log(JSON.stringify(data));
 					}
-				})			
+				})
 			}
-			
+
 		  	$(document).ready(function(){
 		  		$(function(){
 			  		t.order( [ 0, 'asc' ] ).draw(false);
 
 		  			refresh_tabel();
-				});	
-				
+				});
+
 			  	$("#add_action").click(function(){
 			  		var Nama = $("input[name=\"add_nama\"]").val();
 			  		var Ket = $("select[name=\"add_keterangan\"]").val();
 			  		var Alasan = $("input[name=\"add_alasan\"]").val();
-			  		var Kode = $("input[name=\"add_email\"]").val();
+			  		var Kode = $("input[name=\"add_kode\"]").val();
 					$.ajax({
-						dataType: "json", 
+						dataType: "json",
 						url:"action",
 						type:"POST",
 				        contentType: false,
-				        processData: false,    
+				        processData: false,
 						data: function() {
 					        var data = new FormData();
 					        data.append("action", "add");
@@ -221,21 +200,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				        success:function(data){
 				        	add_data_to_table_t(t, data);
 						}
-					});	  		
-				});	
+					});
+				});
 
 			  	$("#update_action").click(function(){
 			  		var id = $("input[name=\"update_id\"]").val();
 			  		var Nama = $("input[name=\"update_nama\"]").val();
 			  		var Ket = $("select[name=\"update_keterangan\"]").val();
 			  		var Alasan = $("input[name=\"update_alasan\"]").val();
-			  		var Kode = $("input[name=\"update_email\"]").val();
+			  		var Kode = $("input[name=\"update_kode\"]").val();
 					$.ajax({
-						dataType: "json", 
+						dataType: "json",
 						url:"action_izin",
 						type:"POST",
 				        contentType: false,
-				        processData: false,     
+				        processData: false,
 						data: function() {
 					        var data = new FormData();
 					        data.append("action", "update");
@@ -249,9 +228,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				        success:function(data){
 				        	add_data_to_table_t(t, data);
 						}
-					})		  		
-				});		
-			});	
-		</script>	
+					})
+				});
+			});
+		</script>
 	</body>
 </html>

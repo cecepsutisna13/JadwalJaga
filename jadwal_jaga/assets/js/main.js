@@ -5,7 +5,7 @@ $(function(){
 
     $('#color').colorpicker(); // Colopicker
 
-    var base_url='http://localhost/fullcalendar/'; // Here i define the base_url
+    var base_url='http://localhost/jadwal_jaga/'; // Here i define the base_url
 
     // Fullcalendar
     $('#calendar').fullCalendar({
@@ -19,9 +19,10 @@ $(function(){
         events: base_url+'calendar/getEvents',
         selectable: true,
         selectHelper: true,
-        editable: true, // Make the event resizable true
+        editable: false, // Make the event resizable true
         displayEventTime: false,
         eventOrder: "status",
+        dayNamesShort: ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'],//nama default dari hari
             select: function(start, end) {
 
                 $('#start').val(moment(start).format('YYYY-MM-DD HH:mm:ss'));
@@ -102,7 +103,7 @@ $(function(){
             // Set currentEvent variable according to the event clicked in the calendar
             currentEvent = calEvent;
             // Open modal to edit or delete event
-            modal({
+            modal_update({
                 // Available buttons when editing
                 buttons: {
                     update: {
@@ -128,38 +129,40 @@ $(function(){
         // Set modal title
         $('.modal-title').html(data.title);
         // Clear buttons except Cancel
-
         $('.modal-footer button:not(".btn-default")').remove();
         // Set input values
-
-          $('#status').val(data.event ? data.event.status : '');
-          $('#title').val(data.event ? data.event.title2 : '');
-          $('#title2').val(data.event ? data.event.title2 : '');
-          $('#description').val(data.event ? data.event.description : '');
-
-        if ($('#status').val() == 'primary'){
-        $('#title').val(data.event ? data.event. title : '');
-        $('#description').val(data.event ? data.event.description : '');
-        $('#title2').val(data.event ? data.event.title : '');}
-        else if ($('#status').val() == 'secondary'){
-        $('#title2').val(data.event ? data.event.title : '');
-        $('#description2').val(data.event ? data.event.description : '');}
-
+        $('#title').val('');
+        $('#title2').val('');
         // Create Butttons
         $.each(data.buttons, function(index, button){
             $('.modal-footer').prepend('<button type="button" id="' + button.id  + '" class="btn ' + button.css + '">' + button.label + '</button>')
         })
         //Show Modal
-        $('.modal').modal('show');
+        $('#modal').modal('show');
+    }
+    function modal_update(data){
+      // Set modal title
+      $('.modal-title').html(data.title);
+      // Clear buttons except Cancel
+      $('.modal-footer button:not(".btn-default")').remove();
+      // Set input values
+      $('#title_update').val(data.event ? data.event.title : '');
+      $('#dev_sebelumnya').val(data.event ? data.event.dev_sebelumnya : '');
+      $('#description').val(data.event ? data.event.description : '');
+      // Create Butttons
+      $.each(data.buttons, function(index, button){
+          $('.modal-footer').prepend('<button type="button" id="' + button.id  + '" class="btn ' + button.css + '">' + button.label + '</button>')
+      })
+      //Show Modal
+      $('#modal1').modal('show');
     }
 
     // Handle Click on Add Button
-    $('.modal').on('click', '#add-event',  function(e){
+    $('#modal').on('click', '#add-event',  function(e){
         if(validator(['title','title2'])) {
             $.post(base_url+'calendar/addEvent', {
                 title: $('#title').val(),
                 status: $('#status').val(),
-                description: $('#description').val(),
                 color: $('#color').val(),
                 start: $('#start').val(),
                 end: $('#end').val()
@@ -172,7 +175,6 @@ $(function(){
             $.post(base_url+'calendar/addEvent', {
                 title: $('#title2').val(),
                 status: $('#status2').val(),
-                description: $('#description2').val(),
                 color: $('#color2').val(),
                 start: $('#start').val(),
                 end: $('#end').val()
@@ -186,26 +188,13 @@ $(function(){
     });
 
     // Handle click on Update Button
-    $('.modal').on('click', '#update-event',  function(e){
-        if(validator(['status'])) {
+    $('#modal1').on('click', '#update-event',  function(e){
+        if(validator(['dev_sebelumnya'])) {
             $.post(base_url+'calendar/updateEvent', {
                 id: currentEvent._id,
-                title: $('#title').val(),
-                status: $('#status').val(),
+                title: $('#dev_sebelumnya').val(),
+                dev_sebelumnya : $('#title_update').val(),
                 description: $('#description').val(),
-                color: $('#color').val()
-            }, function(result){
-                $('.alert').addClass('alert-success').text('Event updated successfuly');
-                $('.modal').modal('hide');
-                $('#calendar').fullCalendar("refetchEvents");
-                hide_notify();
-            });
-            $.post(base_url+'calendar/updateEvent', {
-                id: parseInt(currentEvent._id) + parseInt(1),
-                title: $('#title2').val(),
-                status: $('#status2').val(),
-                description: $('#description2').val(),
-                color: $('#color2').val()
             }, function(result){
                 $('.alert').addClass('alert-success').text('Event updated successfuly');
                 $('.modal').modal('hide');
@@ -245,4 +234,6 @@ $(function(){
         }
         return true;
     }
+
+
 });

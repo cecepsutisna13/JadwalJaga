@@ -7,16 +7,21 @@ class Calendar extends CI_Controller {
     {
         // Call the Model constructor
         parent::__construct();
-		$this->load->helper('url');
-        $this->load->model('m_calendar','calendar');
+				$this->load->helper('url');
+        $this->load->model('m_calendar');
+				if(!$this->session->userdata('loggedIn')){
+						redirect('/user_authentication/');
+				}
     }
 
+	public function index()
+	{
+		$data['userData'] = $this->session->userdata('userData');
+		$data['Calendar'] = $this->m_calendar->tampil_data();
+		$this->template->load('static','v_calendar',$data);
+	}
 
 	/*Home page Calendar view  */
-	Public function index()
-	{
-		$this->template->load('static','v_calendar');
-	}
 
 	/*Get all Events */
 

@@ -3,6 +3,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class m_calendar extends CI_Model {
 
+	public function __construct()
+	{
+    	parent::__construct();
+	}
+
+	public function tampil_data()
+	{
+		$query = $this->db->query("SELECT Nama FROM t_anggota where Status = 'Primary'");
+		return $query;
+	}
+
+	public function tampil_data_baru()
+	{
+		$query = $this->db->query("SELECT Nama FROM t_anggota where Status = 'Secondary'");
+		return $query;
+	}
 
 /*Read the data from DB */
 	Public function getEvents()
@@ -15,8 +31,8 @@ class m_calendar extends CI_Model {
 
 	Public function addEvent()
 	{
-	$sql = "INSERT INTO events (title,status,events.start,events.end,description, color) VALUES (?,?,?,?,?,?)";
-	$this->db->query($sql, array($_POST['title'],$_POST['status'],$_POST['start'],$_POST['end'], $_POST['description'], $_POST['color']));
+	$sql = "INSERT INTO events (title,status,events.start,events.end, color) VALUES (?,?,?,?,?)";
+	$this->db->query($sql, array($_POST['title'],$_POST['status'],$_POST['start'],$_POST['end'], $_POST['color']));
 		return ($this->db->affected_rows()!=1)?false:true;
 	}
 
@@ -25,8 +41,8 @@ class m_calendar extends CI_Model {
 	Public function updateEvent()
 	{
 
-	$sql = "UPDATE events SET title = ?, status = ?, description = ?, color = ? WHERE id = ?";
-	$this->db->query($sql, array($_POST['title'],$_POST['status'],$_POST['description'], $_POST['color'], $_POST['id']));
+	$sql = "UPDATE events SET title = ?, dev_sebelumnya = ?, description = ? WHERE id = ?";
+	$this->db->query($sql, array($_POST['title'],$_POST['dev_sebelumnya'],$_POST['description'], $_POST['id']));
 		return ($this->db->affected_rows()!=1)?false:true;
 	}
 
@@ -53,6 +69,7 @@ class m_calendar extends CI_Model {
 
 
 	}
+	
 
 
 

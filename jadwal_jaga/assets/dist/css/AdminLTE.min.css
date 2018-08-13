@@ -2560,8 +2560,8 @@ a:focus {
 }
 /* PAGINATION */
 .pagination > li > a {
-  background: #fafafa;
-  color: #666;
+  background: #777;
+  color: #fff;
 }
 .pagination.pagination-flat > li > a {
   border-radius: 0 !important;
@@ -2962,7 +2962,7 @@ table.text-center th {
   }
 }
 .modal-header {
-  border-bottom-color: #f4f4f4;
+  border-bottom-color: #3c8dbc;
 }
 .modal-footer {
   border-top-color: #f4f4f4;

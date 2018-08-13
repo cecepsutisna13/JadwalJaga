@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\application",
+    "\\application\\cache",
+    "\\application\\config",
+    "\\application\\controllers",
+    "\\application\\libraries",
+    "\\application\\models",
+    "\\application\\views"
+  ],
+  "SelectedNode": "\\application\\controllers\\Karyawan.php",
+  "PreviewInSolutionExplorer": false
+}

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Karyawan extends CI_Controller {
 
 	function __construct(){
-		parent::__construct(); 
+		parent::__construct();
 		$this->load->helper('url');
 		$this->load->helper('date');
 		$this->load->model('m_karyawan','karyawan');
@@ -56,13 +56,13 @@ class Karyawan extends CI_Controller {
 					"Email" => $Email,
 					"created_at" => $created_at,
 					"updated_at" => $updated_at
-					);		
+					);
 				$this->karyawan->insert($data);
 			break;
 		}
 		header('Content-Type: application/json');
 		echo json_encode($this->karyawan->select());
-	}	
+	}
 
 	public function update_form(){
 		$id = $this->input->post('id');

@@ -66,7 +66,6 @@ button:hover {
    color:white;
 }
 img {
-
    border-radius: 50%;
 }
 h5{

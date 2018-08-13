@@ -6,6 +6,7 @@ class User_Authentication extends CI_Controller
        
         //load google login library
         $this->load->library('google');
+		$this->load->library('template');
        
         //load user model
         $this->load->model('user');
@@ -14,7 +15,7 @@ class User_Authentication extends CI_Controller
     public function index(){
         //redirect to profile page if user already logged in
         if($this->session->userdata('loggedIn') == true){
-            redirect('calendar');
+            redirect('user_authentication/');
         }
        
         if(isset($_GET['code'])){
@@ -63,9 +64,10 @@ class User_Authentication extends CI_Controller
         $data['userData'] = $this->session->userdata('userData');
        
         //load user profile view
-        $this->load->view('user_authentication/profile',$data);
+        $this->template->load('static','profile',$data);
     }
-   
+		
+
     public function logout(){
         //delete login status & user info from session
         $this->session->unset_userdata('loggedIn');

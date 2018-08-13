@@ -62,6 +62,7 @@
 			  <a class="navbar-brand" href="#">
 				<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
 			  </a>
+			  <p><b>Logout from <a href="<?php echo base_url().'user_authentication/logout'; ?>">Google</a></b></p>
 			  <a class="navbar-text">REKA SINERGI PRATAMA</a>
 		</div>
         <!-- 

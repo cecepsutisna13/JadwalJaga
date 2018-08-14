@@ -24,6 +24,7 @@ Class Data extends CI_Controller{
 	public function delete($id){
 		$this->load->model("model_data");
 		$this->model_data->hapus($id);
+	$this->session->set_flashdata('message', 'Konfirmasi Berhasil');
 		redirect("data");
 	}
 

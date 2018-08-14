@@ -89,29 +89,29 @@ border: white;
 <h6>dan meminta akses untuk bisa masuk ke website</h6>
 <h6>Silahkan lakukan proses konfirmasi !!!</h6>
 </div>
-  <div class="identitas">
+		 <div class="identitas">
+		 <?php echo "<h6>".$this->session->flashdata('message')."</h6>";?><br>
 			<!-- ISI DATA AKAN MUNCUL DISINI -->
 			<?php
 			$no = 1; //untuk menampilkan no
 			foreach($list_karyawan as $row){
 				echo "
 				<tr>
-					Nama :<td>$row[first_name]</td>
-					<td>$row[last_name]</td><br>
+					Nama :<td>$row[first_name]</td><td>$row[last_name]</td><br>
 					Email :<td>$row[email]</td><br>
+					<td><br>
+					<a class='btn btn-sm btn-info'>Tolak</a>
+					<a href='data/delete/$row[id]' class='btn btn-sm btn-danger'>Terima</a>
+					</td><br><br>
 				</tr>
 				";
 				$no++;
 			}
 			?>
 		</div>
-  				
 
   <div class="container">
-    <?php echo"
-  	<a class='btn btn-sm btn-info'>Tolak</a>
-	<a href='data/delete/$row[id]' class='btn btn-sm btn-danger'>Terima</a>"
-	?>
+  
   </div>
 </form>
 

@@ -12,7 +12,8 @@ class Karyawan extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->load('static','v_karyawan');
+		$data['userData'] = $this->session->userdata('userData');
+		$this->template->load('static','v_karyawan', $data);
 	}
 
 	public function select_data()

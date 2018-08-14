@@ -1,14 +1,18 @@
 {
   "ExpandedNodes": [
     "",
-    "\\application",
-    "\\application\\cache",
-    "\\application\\config",
-    "\\application\\controllers",
-    "\\application\\libraries",
-    "\\application\\models",
-    "\\application\\views"
+    "\\application\\views",
+    "\\application\\views\\user_authentication",
+    "\\assets",
+    "\\assets\\bootstrap",
+    "\\assets\\bootstrap\\fonts",
+    "\\assets\\bootstrap\\js",
+    "\\assets\\css",
+    "\\assets\\dist",
+    "\\assets\\dist\\css",
+    "\\assets\\dist\\img",
+    "\\assets\\images"
   ],
-  "SelectedNode": "\\application\\controllers\\Karyawan.php",
+  "SelectedNode": "\\assets\\css\\style.css",
   "PreviewInSolutionExplorer": false
 }

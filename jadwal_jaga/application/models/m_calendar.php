@@ -10,7 +10,7 @@ class m_calendar extends CI_Model {
 
 	public function tampil_data()
 	{
-		$query = $this->db->query("SELECT Nama FROM t_anggota where Status = 'Primary'");
+		$query = $this->db->query("SELECT Nama FROM t_anggota");
 		return $query;
 	}
 

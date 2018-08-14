@@ -12,7 +12,8 @@ class Izin extends CI_Controller {
 
 	public function index()
 	{
-		$this->template->load('static','v_izin');
+		$data['userData'] = $this->session->userdata('userData');
+		$this->template->load('static','v_izin', $data);
 	}
 
 	public function select_izin()

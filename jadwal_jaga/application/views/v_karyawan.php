@@ -36,7 +36,7 @@ if(!$this->session->userdata('loggedIn')){
 							                    <input type="Email" class="form-control" name="add_email" placeholder="Email">
 							                </div>
 							                <div class="form-group">
-							                  <label>Peran</label>
+							                  <label>Role</label>
 											  <select class="form-control" name="add_peran" >
 							                      <option value="Administrator">Administrator</option>
 							                      <option value="Developer">Developer</option>
@@ -81,7 +81,7 @@ if(!$this->session->userdata('loggedIn')){
 							                    <input type="Email" class="form-control" name="update_email" placeholder="Email">
 							                </div>
 							                <div class="form-group">
-							                  <label>Peran</label>
+							                  <label>Role</label>
 											  <select class="form-control" name="update_peran" >
 							                      <option value="Administrator">Administrator</option>
 							                      <option value="Developer">Developer</option>

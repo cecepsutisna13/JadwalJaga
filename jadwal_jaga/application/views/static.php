@@ -36,7 +36,10 @@
 			};
 			form .button-group{
 				text-align: right;
-			}		
+			}	
+			img {
+			  border-radius: 50%;
+			}
 		</style> 
 	</head>
 
@@ -63,9 +66,6 @@
 				<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
 			  </a>
 			  <a class="navbar-text">REKA SINERGI PRATAMA</a>
-			  <p><b>Google ID: </b><?php echo @$userData['oauth_uid']; ?></p>
-        <p><b>Name: </b><?php echo @$userData['first_name'].' '.@$userData['last_name']; ?></p>
-			  <p><b>Logout from <a href="<?php echo base_url().'user_authentication/logout'; ?>">Google</a></b></p>
 		</div>
         <!-- 
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,6 +91,14 @@
 			  Statistik
 			  </span></a>
             </li>
+			<li>
+			<div class="logout">
+			 <a href="<?php echo base_url().'user_authentication/logout'; ?>"><img src="<?php echo base_url().'assets/images/off.png'; ?>" text-align=right width=25px hight =25px/></a>
+			<img src="<?php echo @$userData['picture_url']; ?>" width=30px/>
+			<?php echo @$userData['first_name'].' '.@$userData['last_name']; ?>
+			</div>
+			</li>
+            </div>
           </ul>
         </div>
       </div>

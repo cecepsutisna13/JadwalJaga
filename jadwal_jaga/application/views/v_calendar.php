@@ -46,7 +46,7 @@
 						  <div class="row form-group">
 						  <div class="col-md-12">
 						  <select name="title" value="primary" id="title">
-									<option> - Pilih Pelanggan -</option>
+									<option> - Pilih Karyawan -</option>
 										<?php
 											foreach ($Calendar->result() as $baris) {
 											echo "<option value='".$baris->Nama."'>".$baris->Nama."</option>";
@@ -59,7 +59,7 @@
                           <div class="row form-group">
                                 <div class="col-md-12">
                                     <select name="title2" value="primary" id="title2">
-									<option> - Pilih Pelanggan -</option>
+									<option> - Pilih Karyawan -</option>
 										<?php
 											foreach ($Calendar->result() as $baris) {
 											echo "<option value='".$baris->Nama."'>".$baris->Nama."</option>";
